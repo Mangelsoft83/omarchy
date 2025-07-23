@@ -66,6 +66,7 @@
     "on-click": "alacritty --class=Impala -e impala"
   },
   "battery": {
+    "on-click": "~/.local/share/omarchy/bin/toggle_power_profiles.sh
     "format": "{capacity}% {icon}",
     "format-discharging": "{icon}",
     "format-charging":    "{icon}",
