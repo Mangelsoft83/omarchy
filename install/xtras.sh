@@ -2,9 +2,9 @@
 
 if [ -z "$OMARCHY_BARE" ]; then
   yay -S --noconfirm --needed \
-    gnome-calculator gnome-keyring signal-desktop \
-    obsidian-bin libreoffice obs-studio kdenlive \
-    xournalpp localsend-bin
+    gnome-calculator gnome-keyring \
+    obsidian-bin libreoffice obs-studio \
+    xournalpp localsend-bin flatpak
 
   # Packages known to be flaky or having key signing issues are run one-by-one
   for pkg in pinta typora spotify zoom; do
