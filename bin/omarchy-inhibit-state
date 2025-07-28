@@ -1,0 +1,13 @@
+#!/bin/bash
+
+STATE_FILE="/tmp/waybar-inhibit-state"
+
+if pgrep -f "systemd-inhibit --what=idle" >/dev/null; then
+  ICON="" # toggle on
+  TEXT="Idle inhibition active"
+else
+  ICON="" # toggle off
+  TEXT="Idle inhibition inactive"
+fi
+
+echo "{\"text\": \"$ICON\", \"tooltip\": \"$TEXT\"}"

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+STATE_FILE="/tmp/waybar-inhibit-state"
+
+if pgrep -f "systemd-inhibit --what=idle"; then
+    pkill -f "systemd-inhibit --what=idle"
+    echo "" > "$STATE_FILE"  # icon: sleep mode (inhibited off)
+else
+    nohup systemd-inhibit --what=idle --why="Waybar inhibit idle" bash -c "while true; do sleep 60; done" > /dev/null 2>&1 &
+    echo "" > "$STATE_FILE"  # icon: inhibit on
+fi
+

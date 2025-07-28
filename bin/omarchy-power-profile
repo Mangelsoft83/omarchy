@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Get current power profile
+current=$(powerprofilesctl get)
+
+# Define the available profiles
+profiles=("performance" "balanced" "power-saver")
+
+# Reorder profiles to put current on top
+ordered=("$current")
+for p in "${profiles[@]}"; do
+  [[ "$p" != "$current" ]] && ordered+=("$p")
+done
+
+# Present the menu
+selected=$(printf "%s\n" "${ordered[@]}" | walker --dmenu --theme dmenu_150 --width 200)
+
+# Set selected profile
+if [[ -n "$selected" ]]; then
+  powerprofilesctl set "$selected"
+  notify-send "Power Profile Set" "Switched to $selected"
+fi
