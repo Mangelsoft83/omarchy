@@ -66,7 +66,7 @@
     "on-click": "alacritty --class=Impala -e impala"
   },
   "battery": {
-    "on-click": "~/.local/share/omarchy/bin/toggle_power_profiles.sh
+    "on-click": "~/.local/share/omarchy/bin/omarchy-power-profile",
     "format": "{capacity}% {icon}",
     "format-discharging": "{icon}",
     "format-charging":    "{icon}",
@@ -114,6 +114,7 @@
     },
     "modules": [
       "custom/expand-icon",
+      "custom/inhibit",
     "tray"
     ]
   },
@@ -124,5 +125,18 @@
   "tray": {
     "icon-size": 12,
     "spacing": 12
+  }, 
+  "custom/inhibit": {
+    "format": "{}",
+    "tooltip": true,
+    "exec": "~/.local/share/omarchy/bin/omarchy-inhibit-state",
+    "interval": 5,
+    "on-click": "~/.local/share/omarchy/bin/omarchy-inhibit-toggle",
+    "return-type": "json",
+    "class": "inhibit"
   }
+
+  
+  
+
 }
